@@ -1,0 +1,25 @@
+php_cli_repositories:
+  Ubuntu:
+     - version:    70
+       repository: "ppa:ondrej/php-7.0"
+     - version:    56
+       repository: "ppa:ondrej/php5-5.6"
+     - version:    55
+       repository: "ppa:ondrej/php5"
+     - version:    54
+       repository: "ppa:ondrej/php5-oldstable"
+
+php_cli_packages:
+  Ubuntu: "php5-cli"
+
+php_cli_version:    56
+#php_cli_repository: '{{ php_cli_repositories|attr(ansible_distribution) }}'
+php_cli_repository: '{{ php_cli_repositories[ansible_distribution] | selectattr("version", "sameas", php_cli_version) | list | map(attribute="repository") | first  }}'
+
+php_cli_package:    '{{ php_cli_packages [ansible_distribution] | default("php5-cli", true) }}'
+
+php_cli_cache_update: '{{ "yes" if apt_cache_update|default(true) else "no" }}'
+php_cli_cache_timeout: '{{ apt_cache_timeout|default(3600) }}'
+
+php_cli_apt_cache_update:  '{{ php_cli_cache_update }}'
+php_cli_apt_cache_timeout: '{{ php_cli_cache_timeout }}'

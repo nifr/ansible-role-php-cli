@@ -1,0 +1,7 @@
+---
+
+- include: php5_cli/add/repository.yml
+
+- include: php5_cli/install/package.yml
+
+

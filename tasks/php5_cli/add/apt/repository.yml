@@ -1,0 +1,12 @@
+---
+
+#- debug: var=php_cli_version
+#- debug: var=php_cli_repository
+
+- name: "php5-cli:add:apt:repository | Adding the apt repository."
+  apt_repository:
+    repo:         '{{ item.repo }}'
+    state:        'present'
+    update_cache: '{{ item.cache_update }}'
+  with_items:
+    - '{"repo": "{{ php_cli_repository }}", "cache_update": "{{ php_cli_apt_cache_update }}"}'
