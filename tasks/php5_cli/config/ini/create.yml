@@ -1,0 +1,8 @@
+---
+
+- name: "php-cli:config:ini:create | Create ini configurations."
+  template:
+    src:  "../../../../templates/php-ini/ini.conf.j2"
+    dest: '{{ item.path }}'
+  with_items:
+   - '{{ php_cli_ini_configs }}'
