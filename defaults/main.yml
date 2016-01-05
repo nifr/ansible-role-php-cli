@@ -23,3 +23,10 @@ php_cli_cache_timeout: '{{ apt_cache_timeout|default(3600) }}'
 
 php_cli_apt_cache_update:  '{{ php_cli_cache_update }}'
 php_cli_apt_cache_timeout: '{{ php_cli_cache_timeout }}'
+
+php_cli_ini_configs: []
+#  - path: "/etc/php5/cli/php.ini"
+#    sections:
+#      - name: "Date"
+#        options:
+#          - "date.timezone": "Europe/Berlin"

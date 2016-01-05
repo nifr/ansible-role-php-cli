@@ -4,4 +4,4 @@
 
 - include: php5_cli/install/package.yml
 
-
+- include: php5_cli/config/ini/create.yml
